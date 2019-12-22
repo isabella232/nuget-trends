@@ -32,6 +32,7 @@ namespace NuGetTrends.Scheduler
             services.AddHostedService<DailyDownloadWorker>();
 
             services.AddSingleton<INuGetSearchService, NuGetSearchService>();
+            services.AddTransient<IDailyDownloadService, DailyDownloadService>();
             services.AddTransient<ISentryEventExceptionProcessor, DbUpdateExceptionProcessor>();
 
             services.Configure<DailyDownloadWorkerOptions>(_configuration.GetSection("DailyDownloadWorker"));
